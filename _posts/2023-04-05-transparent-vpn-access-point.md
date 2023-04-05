@@ -52,81 +52,81 @@ My router is connected to the computer on `LAN1` port via cable. Default OpenWRT
 
 
 1. Log into the router (`http://192.168.1.1`) with username: `root`, and an empty password.
-![openwrt-login-screen](/img/portable-vpn/1-openwrt-login.png "OpenWRT login screen")
-![openwrt-welcome](/img/portable-vpn/2-openwrt-welcome.png "OpenWRT home page")
+![openwrt-login-screen](/assets/portable-vpn/1-openwrt-login.png "OpenWRT login screen")
+![openwrt-welcome](/assets/portable-vpn/2-openwrt-welcome.png "OpenWRT home page")
 2. Set the root password in `System -> Administration -> Router Password`
 
 *note*: It is used to change the configuration of the router, set it wisely.
-![openwrt-root-password](/img/portable-vpn/3-router-password.png)
+![openwrt-root-password](/assets/portable-vpn/3-router-password.png)
 3. Change the default network from `192.168.1.0/24` to `192.168.166.0/24` in `Network -> Interfaces`.
 
 *note*: Most of the default router networks are `192.168.1.0/24`, this router may receive WAN access from such network. We change it to avoid IP address conflicts. It can be changed to whatever you prefer, just make it *kind of non-default*.
 * Click `Edit` button on `br-lan` interface
-    ![openwrt-network-interfaces-1](/img/portable-vpn/4-network-interfaces.png)
+    ![openwrt-network-interfaces-1](/assets/portable-vpn/4-network-interfaces.png)
 * Change IPv4 address to `192.168.169.1`
-    ![openwrt-network-interfaces-2](/img/portable-vpn/5-change-network.png)
+    ![openwrt-network-interfaces-2](/assets/portable-vpn/5-change-network.png)
 * Click `Save`, `Save & Apply` and `Apply with revert after connectivity loss`.
     
     After saving, you'll need to connect to the web interface on `192.168.169.1` again and re-login to double confirm your changes.
     If you fail to do that, router will revert configuration back to `192.168.1.1`.
-    ![openwrt-network-interfaces-3](/img/portable-vpn/6-connectivity-loss.png)
-    ![openwrt-network-interfaces-4](/img/portable-vpn/7-after-connectivity.png)
-    ![openwrt-network-interfaces-5](/img/portable-vpn/8-relogin.png)
+    ![openwrt-network-interfaces-3](/assets/portable-vpn/6-connectivity-loss.png)
+    ![openwrt-network-interfaces-4](/assets/portable-vpn/7-after-connectivity.png)
+    ![openwrt-network-interfaces-5](/assets/portable-vpn/8-relogin.png)
 
 ### Connecting to the Internet (via 2.4GHz interface)
 
 0. Open `Network -> Wireless` and remove the 2.4 GHz network, it is the one under `MediaTek MT7915E 802.11axbgn`. We will use it as a WWAN.
-![openwrt-network-wireless](/img/portable-vpn/9-network-wireless.png)
-![openwrt-network-wireless-2](/img/portable-vpn/10-after-removal.png)
+![openwrt-network-wireless](/assets/portable-vpn/9-network-wireless.png)
+![openwrt-network-wireless-2](/assets/portable-vpn/10-after-removal.png)
 
 1. Click `Scan` on 2.4GHz interface (`radio0`) and connect to your provider network (`Join Network`).
-    ![openwrt-network-wireless-3](/img/portable-vpn/11-network-scan.png)
+    ![openwrt-network-wireless-3](/assets/portable-vpn/11-network-scan.png)
 2. Enter network password in `WPA passphrase field`, leave everything else as default and click `Submit`.
-    ![openwrt-network-wireless-4](/img/portable-vpn/12-join-network.png)
+    ![openwrt-network-wireless-4](/assets/portable-vpn/12-join-network.png)
 3. You will be presented with confirmation screen. In the `Interface Configuration` add `lan` to the `Network` field. It will connect WAN and LAN, so you will also have VPN on LAN ports.
-    ![openwrt-network-wireless-5](/img/portable-vpn/13-attach-interface.png)
+    ![openwrt-network-wireless-5](/assets/portable-vpn/13-attach-interface.png)
 4. Go to `Advaned Settings` and set appropriate `Country Code` to be compliant with local regulations.
-    ![openwrt-network-wireless-6](/img/portable-vpn/14-country-code.png).
+    ![openwrt-network-wireless-6](/assets/portable-vpn/14-country-code.png).
 5. Click `Save`, there should be around `20 UNSAVED CHANGES`. Click `Save & Apply` and wait.
-    ![openwrt-network-wireless-7](/img/portable-vpn/15-wi-fi-changes.png).
+    ![openwrt-network-wireless-7](/assets/portable-vpn/15-wi-fi-changes.png).
 6. Your router is now connected to the WiFi and exposes Internet via LAN!
     
 ### Exposing a new WiFi (via 5GHz interface)
 
 1. Go to `Network -> Wireless`. Click `Enable` on `OpenWrt` network.
-![openwrt-network-wireless-8](/img/portable-vpn/16-enable-5ghz.png).
+![openwrt-network-wireless-8](/assets/portable-vpn/16-enable-5ghz.png).
 2. After a while, the router will expose the 5GHz network, but its not secure. Click `Edit` and change its name (I changed it to `Pizza`), then go to `Wireless Security` and set the encryption to `WPA2-PSK` and set a good password (`key`) for your new WiFi network.
-![openwrt-network-wireless-9](/img/portable-vpn/17-pizza.png).
-![openwrt-network-wireless-10](/img/portable-vpn/18-password.png).
+![openwrt-network-wireless-9](/assets/portable-vpn/17-pizza.png).
+![openwrt-network-wireless-10](/assets/portable-vpn/18-password.png).
 3. Click `Save` then `Save and Apply`.
 4. Your router now exposes a secure 5Ghz WiFi!
 
 ### Connecting to ProtonVPN
 
 1. Install OpenWRT OpenVPN extensions. Go to `System -> Software` and click `Update lists`. After updating lists install 2 packages: `openvpn-openssl` and `luci-app-openvpn`.
-![openwrt-network-wireless-11](/img/portable-vpn/20-openvpn-install.png)
-![openwrt-network-wireless-12](/img/portable-vpn/21-openvpn-logs.png)
-![openwrt-network-wireless-13](/img/portable-vpn/22-openvpn-lucl.png)
+![openwrt-network-wireless-11](/assets/portable-vpn/20-openvpn-install.png)
+![openwrt-network-wireless-12](/assets/portable-vpn/21-openvpn-logs.png)
+![openwrt-network-wireless-13](/assets/portable-vpn/22-openvpn-lucl.png)
 2. Go to the homepage of OpenWrt web configuration. There is a new tab (`VPN`). Go to `VPN -> OpenVPN`.
-![openwrt-network-wireless-14](/img/portable-vpn/23-home.png)
-![openwrt-network-wireless-15](/img/portable-vpn/24-openvpn-conf.png)
+![openwrt-network-wireless-14](/assets/portable-vpn/23-home.png)
+![openwrt-network-wireless-15](/assets/portable-vpn/24-openvpn-conf.png)
 3. Log in into your [Proton VPN account](https://account.protonvpn.com/) and download [OpenVPN configurations](https://protonvpn.com/support/vpn-config-download/) for your desired country.
 4. Upload your configuration in the `OVPN configuration file upload` section by selecting a conf file, setting the instance name and clicking `Upload`.
-![openwrt-network-wireless-16](/img/portable-vpn/25-upload.png)
+![openwrt-network-wireless-16](/assets/portable-vpn/25-upload.png)
 5. After uploading a new OpenVPN instance will show up (in my case it is `Poland`). Click `Edit`.
-![openwrt-network-wireless-17](/img/portable-vpn/26-instance.png)
+![openwrt-network-wireless-17](/assets/portable-vpn/26-instance.png)
 6. Find line `auth-user-pass` and set it to accordingly (e.g. `/etc/openvpn/Poland.auth`). In the field below specify your ProtonVPN username and password (ProtonVPN -> Account -> OpenVPN / IKEv2 Username).
-![openwrt-network-wireless-18](/img/portable-vpn/27-password.png)
+![openwrt-network-wireless-18](/assets/portable-vpn/27-password.png)
 7. Click `Save` and go back to `VPN -> OpenVPN`. Click `Enabled` to yes, then `Save & Apply` and `start`.
-![openwrt-network-wireless-19](/img/portable-vpn/28-vpn-connect.png)
+![openwrt-network-wireless-19](/assets/portable-vpn/28-vpn-connect.png)
 8. At this point, the VPN is set up and your router can use it. However, the devices in the LAN of your router won’t be able to access the Internet anymore. To do this, you need to set the VPN network interface as public by assigning a VPN interface to WAN zone.
 9. Go to `Network -> Firewall` and select `Edit` on `wan => reject` section. 
-![openwrt-network-wireless-19](/img/portable-vpn/29-firewall-1.png)
+![openwrt-network-wireless-19](/assets/portable-vpn/29-firewall-1.png)
 * Select `Advanced Settings`, then in the `Covered devices` field, select `tun0`.
-![openwrt-network-wireless-19](/img/portable-vpn/29-firewall-2.png)
+![openwrt-network-wireless-19](/assets/portable-vpn/29-firewall-2.png)
 10. `Save` -> `Save & Apply` and wait.
 11. Voila! You now have a WiFi and LAN ports secured by VPN. You can test it on a site like [ipleak.net](https://ipleak.net).
-![openwrt-network-wireless-19](/img/portable-vpn/30-ip.png)
+![openwrt-network-wireless-19](/assets/portable-vpn/30-ip.png)
 
 
 ### FAQ

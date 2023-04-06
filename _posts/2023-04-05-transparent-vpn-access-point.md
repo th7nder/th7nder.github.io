@@ -7,7 +7,7 @@ Instead of making a VPN connection on the device you can make it on the router a
 
 Sounds easy enough, but what do you need to make it happen?
 1. Router needs to use WiFi as its WAN interface. In other words we can connect to any WiFI network and use it as a internet source. Why? We do not always have an physical access to the access point, where we can plug in an RJ-45 cable.
-2. Router must be able to talk [OpenVPN](https://openvpn.net/faq/what-is-openvpn/) or [WireGuard](https://www.wireguard.com/) protocols. Most VPN providers doesn't allow [L2TP](https://nordvpn.com/blog/l2tp-protocol/)/[PPTP](https://www.expressvpn.com/what-is-vpn/protocols/pptp), because [security reasons](https://protonvpn.com/blog/pptp/).
+2. Router must be able to talk [OpenVPN](https://openvpn.net/faq/what-is-openvpn/) or [WireGuard](https://www.wireguard.com/) protocols. Most VPN providers don't allow [L2TP](https://nordvpn.com/blog/l2tp-protocol/)/[PPTP](https://www.expressvpn.com/what-is-vpn/protocols/pptp), because [security reasons](https://protonvpn.com/blog/pptp/).
 3. We cannot change anything on the Access Point WiFi as we don't have admin rights.
 
 

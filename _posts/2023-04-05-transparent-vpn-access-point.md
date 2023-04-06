@@ -22,7 +22,7 @@ What I did is a somewhat exotic solution and doing this on a stock firmware is n
 I needed a router that can be flashed with OpenWRT and preferably under 100$.
 I live in Poland and needed it ASAP, so I browsed through the websites of local electronics stores.
 I sorted by price, went one by one and checked OpenWRT compatibility.
-The lucky winner is: [Asus RT-AX53U](https://openwrt.org/toh/asus/rt-ax53u) which I bought [here]([https://www.x-kom.pl/p/679724-router-asus-rt-ax53u-1800mb-s-a-b-g-n-ac-ax-1xusb-3xlan.html]) for roughly $60.
+The lucky winner is: [Asus RT-AX53U](https://openwrt.org/toh/asus/rt-ax53u) which I bought [here](https://www.x-kom.pl/p/679724-router-asus-rt-ax53u-1800mb-s-a-b-g-n-ac-ax-1xusb-3xlan.html) for roughly $60.
 
 
 ### Stock firmware

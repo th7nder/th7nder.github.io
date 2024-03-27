@@ -31,7 +31,7 @@ This way, while we wait for the data to come, we can continue to make other work
 
 There is a nice library, which tokio is based upon, called [`mio`](https://github.com/tokio-rs/mio). In the book, I've been implementing a simplified version of mio.
 
-Link to the full example, [github.com/th7nder/my-mio](https://github.com/th7nder/my-mio/blob/main/src/main.rs).
+Link to the full example: [github.com/th7nder/my-mio](https://github.com/th7nder/my-mio/blob/main/src/main.rs).
 [Delay Server](https://github.com/PacktPublishing/Asynchronous-Programming-in-Rust/tree/main/delayserver)
 Example excerpt:
 ```rust
